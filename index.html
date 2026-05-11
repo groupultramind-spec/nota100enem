@@ -2658,7 +2658,7 @@
             <div class="phone-css">
               <div class="phone-notch"></div>
               <div class="phone-screen">
-                <video id="heroVideo" class="phone-video" autoplay muted loop playsinline controls>
+                <video id="heroVideo" class="phone-video" autoplay muted loop playsinline onclick="handleVideoClick()">
                   <source src="assets/clipe2.mp4" type="video/mp4">
                   Seu navegador não suporta a tag de vídeo.
                 </video>
@@ -4073,9 +4073,22 @@
       if (video.muted) {
         video.muted = false;
         video.volume = 1.0;
-        video.play(); // Garante que continue rodando
+        video.play();
         overlay.style.opacity = '0';
         setTimeout(() => overlay.style.display = 'none', 300);
+      }
+    }
+
+    function handleVideoClick() {
+      const video = document.getElementById('heroVideo');
+      if (video.muted) {
+        toggleVideoSound();
+      } else {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
       }
     }
   </script>
