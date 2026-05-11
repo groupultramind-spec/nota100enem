@@ -542,8 +542,43 @@
     .phone-video {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Faz o vídeo preencher todo o espaço do celular */
+      object-fit: cover;
       border: none;
+      cursor: pointer;
+    }
+
+    .unmute-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(2px);
+      z-index: 20;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .unmute-btn {
+      background: var(--primary);
+      color: var(--black);
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-family: 'Anton', sans-serif;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.4);
+      animation: unmutePulse 1.5s infinite;
+    }
+
+    @keyframes unmutePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     /* Mockup Content (Site Simulation) */
@@ -2623,10 +2658,16 @@
             <div class="phone-css">
               <div class="phone-notch"></div>
               <div class="phone-screen">
-                <video class="phone-video" autoplay muted loop playsinline>
+                <video id="heroVideo" class="phone-video" autoplay muted loop playsinline onclick="toggleVideoSound()">
                   <source src="assets/clipe2.mp4" type="video/mp4">
                   Seu navegador não suporta a tag de vídeo.
                 </video>
+                <div id="unmuteOverlay" class="unmute-overlay" onclick="toggleVideoSound()">
+                  <div class="unmute-btn">
+                    <iconify-icon icon="ph:speaker-high-fill" width="20"></iconify-icon>
+                    CLIQUE PARA OUVIR
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -4023,6 +4064,19 @@
         if (b2) b2.style.transform = `translate(-${scrolled * 0.1}px, -${scrolled * 0.05}px)`;
       });
     });
+  </script>
+  <script>
+    function toggleVideoSound() {
+      const video = document.getElementById('heroVideo');
+      const overlay = document.getElementById('unmuteOverlay');
+      
+      if (video.muted) {
+        video.muted = false;
+        video.volume = 1.0;
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.display = 'none', 300);
+      }
+    }
   </script>
 </body>
 
