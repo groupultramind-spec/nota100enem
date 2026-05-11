@@ -1,0 +1,9 @@
+node_modules/
+.netlify/
+__pycache__/
+*.pyc
+scratch/
+deno.lock
+package-lock.json
+script_0.js
+.env
