@@ -542,9 +542,7 @@
     .phone-video {
       width: 100%;
       height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
+      object-fit: cover; /* Faz o vídeo preencher todo o espaço do celular */
       border: none;
     }
 
@@ -2625,7 +2623,10 @@
             <div class="phone-css">
               <div class="phone-notch"></div>
               <div class="phone-screen">
-                <iframe class="phone-video" src="https://www.youtube.com/embed/pjSP5j-qraQ?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                <video class="phone-video" autoplay muted loop playsinline>
+                  <source src="https://drive.google.com/uc?id=1ARRrtorso_F9huUgp9CyyvVbkZ5D8U2x&export=download" type="video/mp4">
+                  Seu navegador não suporta a tag de vídeo.
+                </video>
               </div>
             </div>
           </div>
