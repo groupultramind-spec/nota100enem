@@ -2080,6 +2080,7 @@
         border-radius: 16px;
         max-height: 90vh;
         max-width: 90vw;
+        overflow-y: auto;
       }
 
       .upsell-body {
@@ -3024,6 +3025,7 @@
   <div id="upsell-overlay">
     <div class="upsell-modal">
       <div class="upsell-header">
+        <button class="checkout-close" style="color: #000; z-index: 10;" onclick="document.getElementById('upsell-overlay').classList.remove('active'); document.body.style.overflow = '';">&times;</button>
         <h2>ESPERA! OFERTA EXCLUSIVA</h2>
         <p>Acelere sua aprovação com o Pack 500</p>
       </div>
